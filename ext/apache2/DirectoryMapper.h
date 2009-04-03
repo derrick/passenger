@@ -225,8 +225,12 @@ public:
 				/* Application is deployed in a sub-URI.
 				 * This is probably a symlink, so let's resolve it.
 				 */
+				 // Actually, I don't want to resolve the symlink, because
+				 // I'm using the symlink to point multiple instances of the app
+				 // (each with different environment variables) to the same
+				 // rails code base.
 				path.append(baseURI);
-				path = resolveSymlink(path);
+        // path = resolveSymlink(path);
 			}
 			return path;
 		} else {
